@@ -7,8 +7,8 @@ Why?:
 - Be more productive
 How?:
 - Need dependency management tool; !npm or yarn.
-- Need a bundler, write modular code to split over multiple files so each file has a clear task. 
-  Make sure code gets bundle into a couple of files when we ship; !webpack
+- Need a bundler, write modular code to split over multiple files so each file has a clear task. Make sure code gets 
+bundle into a couple of files when we ship; !webpack
 - Need a compiler that compilate modern features that work on older browsers, can be hooked into webpack !babel
 - Need a development server
 
@@ -23,13 +23,15 @@ Recommended tool for creating react projects:
 
 #Component Basics
 React is all about creating components, we render one root component and in there we nest all our other components.
-We extend Component from the React library, so it needs to have the render method with html code to reach the browser (the dom).
+We extend Component from the React library, so it needs to have the render method with html code to reach the browser 
+(the dom).
 We then export the class with the default keyword.
 We actually render JSX and not html, so we can write it in our js files.
 
 #Understanding JSX
 React.createElement() would be the use without JSX where you return each element.
-React will allow us to write JSX and handle the parse to html (not really html but React.createElement() code) behind the scenes when it compiles.
+React will allow us to write JSX and handle the parse to html (not really html but React.createElement() code) behind 
+the scenes when it compiles.
 Class in html can't be used due to it being a keyword in js, therefore we need to use className
 !!!Not using real html, using reacts version!!!
 Need to rap everything in one root component. Nest everything in one single root.
@@ -46,5 +48,55 @@ const person = () => {
 }
 [end]
 - We then import Person into our App.js (root) with capital and add it to our JSX with <Person></Person>
+- We can then write javascript in our JSX by wrapping it in curly brackets, only one line expressions (not functions)
 
+#Working With Props
+Properties can be passed down to component and then accessed as arguments from our main function with props.
+For example in the parent component we can call the child component and pass a variable like name, We can then access 
+variable name in our child component with props.name. We can also pass the content inside the component tag with the 
+props.children keyword.
+
+#Understanding and using State
+Sometimes you want to get information from inside and change it from there. You don't want to use state too much as your
+app can become unpredictable.
+We can initialise the state property as a javascript object:
+[javascript]
+state = {
+    persons: [
+        { name: 'Jack', age: 25 },
+        { name: 'Jess', age: 22 }
+    ]
+}
+[end]
+We can then access it within our component tag in JSX with this.state.persons[0].name which will access the first element 
+in our state array.
+
+#Props and State
+Props and state are core concepts of React. Only changes in props and/or state trigger React to re-render your components 
+and potentially update the DOM in the browser.
+
+#Handling events with methods
+When we call our function we want to only pass a reference.
+In JSX we can create a button listener with:
+[html]
+<button onClick>Click<button>
+[end]
+And then create a switch handler with:
+[javascript]
+switchNameHandler = () => {
+    this.setState({
+        persons: [
+            { name: 'Jack', age: 25 },
+            { name: 'Jessica', age: 22 }
+        ]
+    })
+}
+[end]
+This will override the original state with our new persons array.
+
+#State vs Stateless
+Only really want a couple state components, easier to maintain and manage.
+
+#Passing method references
+Can pass down click handlers which allow you to change the data into the parent component
 
