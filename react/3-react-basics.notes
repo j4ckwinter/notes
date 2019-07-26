@@ -1,0 +1,50 @@
+#React Basics
+
+#The Build Workflow
+Why?:
+- We want to ship code as small as possible.
+- Want to use next gen js features.
+- Be more productive
+How?:
+- Need dependency management tool; !npm or yarn.
+- Need a bundler, write modular code to split over multiple files so each file has a clear task. 
+  Make sure code gets bundle into a couple of files when we ship; !webpack
+- Need a compiler that compilate modern features that work on older browsers, can be hooked into webpack !babel
+- Need a development server
+
+#Create React App
+Recommended tool for creating react projects:
+- npm start to start project (keep it running as hot reloading)
+- node_modules is generated when running npm install
+- public directory the root folder that gets served by the web server
+- index.js gets access to our root element in our dom , renders react app with render method
+- App.css, index.css is global stylings
+- registerServiceWorker.js will pre cache our script files out of the box
+
+#Component Basics
+React is all about creating components, we render one root component and in there we nest all our other components.
+We extend Component from the React library, so it needs to have the render method with html code to reach the browser (the dom).
+We then export the class with the default keyword.
+We actually render JSX and not html, so we can write it in our js files.
+
+#Understanding JSX
+React.createElement() would be the use without JSX where you return each element.
+React will allow us to write JSX and handle the parse to html (not really html but React.createElement() code) behind the scenes when it compiles.
+Class in html can't be used due to it being a keyword in js, therefore we need to use className
+!!!Not using real html, using reacts version!!!
+Need to rap everything in one root component. Nest everything in one single root.
+
+#Creating a Functional Component
+- Give components folder and files a capital starting character.
+- State = change component at runtime.
+Function name should be lower case, but with same name as folder/file, eg:
+!Person -> Person.js
+[javascript]
+import React from 'react';
+const person = () => {
+    return <p> I'm a Person! </p>
+}
+[end]
+- We then import Person into our App.js (root) with capital and add it to our JSX with <Person></Person>
+
+

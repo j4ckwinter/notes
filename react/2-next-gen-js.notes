@@ -1,0 +1,50 @@
+#Next Gen Javascript
+
+#Variables
+- Let and const - use let, const can't be reassigned.
+- Triple equals checks for type and value equality.
+
+#Exports and imports (modules)
+Modular code. Default keyword during export will use the file, named exports need to import exact name with curly brackets.
+
+#Classes
+- Can do inheritance like Java. Eg: class Person extends Human. 
+- Will need to call the super() on Person class to executes parent constructor to correctly initialise the human class which you need to do. 
+- Blueprints of objects.
+
+#Spread and Rest Operators
+- !Spread!: Used to split up an array of elements or object properties
+Below code will take all the elements from the oldArray and put them into the new array and add more elements.
+const newArray = […oldArray, 1, 2]
+- !Rest!: Used to merge a list of function arguments into an array. The below function calls the array filter method so will only return 1
+const filter = (…args) => {
+	Return args.filter(el => el === 1);
+}
+console.log(filter(1, 2, 3));
+
+#Destructuring
+Easily extract array elements or object properties and store them in variables:
+const numbers = [1, 2, 3];
+[num1, num2] = numbers;
+
+#Reference and Primitive Types
+- Objects and arrays are reference types. 
+- If you reassign then you are copying the pointer, not the value. 
+- Therefore if you want to do this in a real copy way you will have to create a new object and copy the properties like we done with the spread operator.
+
+#Arrow functions
+When define a function normally, instead assign it with a constant. Then list of arguments, then and arrow then the function body, shorter, solves issues with the this keyword. 
+Arrow function syntax may look strange but it's actually simple:
+function callMe(name) { 
+    console.log(name);
+}
+// which you could also write as
+const callMe = function(name) { 
+    console.log(name);
+}
+// becomes 
+const callMe = (name) => { 
+    console.log(name);
+}
+
+
