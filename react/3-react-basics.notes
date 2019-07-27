@@ -98,5 +98,8 @@ This will override the original state with our new persons array.
 Only really want a couple state components, easier to maintain and manage.
 
 #Passing method references
-Can pass down click handlers which allow you to change the data into the parent component
+Can pass down click handlers which allow you to change the data into the child component from the parent component,
+by adding onCLick() to child JSX and click={this.switchNameHandler} which passes a references. Then we have props.click
+in child component.
+Using a => function will add a return keyword after the arrow
 
