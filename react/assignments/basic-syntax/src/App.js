@@ -19,7 +19,11 @@ class App extends Component {
 
   nameChangedHandler = event => {
     this.setState({
-      usernames: [{ name: event.target.value }]
+      usernames: [
+        { name: event.target.value },
+        { name: event.target.value },
+        { name: event.target.value }
+      ]
     });
   };
 
@@ -30,13 +34,19 @@ class App extends Component {
           <button onClick={() => this.switchNameHandler("Jack!!")}>
             Change names
           </button>
-          <UserOutput name={this.state.usernames[0].name} />
+          <UserOutput
+            name={this.state.usernames[0].name}
+            changed={this.nameChangedHandler}
+          />
           <UserOutput
             name={this.state.usernames[1].name}
             click={this.switchNameHandler.bind(this, "Jessica")}
             changed={this.nameChangedHandler}
           />
-          <UserOutput name={this.state.usernames[2].name} />
+          <UserOutput
+            name={this.state.usernames[2].name}
+            changed={this.nameChangedHandler}
+          />
         </header>
       </div>
     );
