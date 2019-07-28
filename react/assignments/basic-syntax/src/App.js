@@ -28,23 +28,18 @@ class App extends Component {
     const usernameIndex = this.state.usernames.findIndex(user => {
       return user.id === id;
     });
-    const usernameCopy = {...this.state.usernames[usernameIndex]};
+    const usernameCopy = { ...this.state.usernames[usernameIndex] };
     usernameCopy.name = event.target.value;
     const usernamesCopy = [...this.state.usernames];
     usernamesCopy[usernameIndex] = usernameCopy;
-    this.setState({usernames: usernamesCopy});
-  }
+    this.setState({ usernames: usernamesCopy });
+  };
 
   render() {
     let users = null;
     let buttons = null;
 
     if (this.state.showUsers) {
-      buttons = (
-        <div>
-          <button onClick={this.toggleContentHandler}>Hide Content</button>
-        </div>
-      );
       users = (
         <div>
           {this.state.usernames.map((username, index) => {
@@ -52,17 +47,25 @@ class App extends Component {
               <UserOutput
                 name={username.name}
                 key={username.id}
-                changed={(event) => this.changeNameHandler(event, username.id)}
-                click={(event) => this.deleteUserOutputHandler(index)}
+                changed={event => this.changeNameHandler(event, username.id)}
+                click={event => this.deleteUserOutputHandler(index)}
               />
             );
           })}
         </div>
       );
+      buttons = (
+        <div>
+          <button onClick={this.toggleContentHandler}>Hide Content</button>
+        </div>
+      );
     } else {
       buttons = (
         <div>
+          <h1>Welcome to Jack's app</h1>
+          <div>
           <button onClick={this.toggleContentHandler}>Display Content</button>
+          </div>
         </div>
       );
     }
@@ -70,8 +73,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {buttons}
           {users}
+          {buttons}
         </header>
       </div>
     );
