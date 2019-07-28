@@ -5,3 +5,24 @@ In our render method we can wrap our JSX content in a { this.state.showPersons =
 want to show persons given our state is true. Our else case is defined by the colon.
 This is another use of us injecting javascript expressions into JSX using curly brackets. Effectively we are calling
 React.createElement(), not explicitly but this is what React is doing under the hood.
+
+#Handling Dynamic Content the Javascript way
+We can pull out our more complex JSX dynamic content into javascript if functions inside our render function.
+
+#Outputting Lists
+We can use the javascript map function to map our array into a JSX list. We can do this by using an annonymous function:
+this.state.persons.map(person => {
+    return <Person name={person}/>
+})
+
+#Manipulating Lists
+Both these statements copy the usernames array into a new rather than updating the reference pointer of the original array
+Using the spread operator is a more modern way (number 2).
+1. const usernames = this.state.usernames.slice();
+2. const usernames = [...this.state.usernames];
+
+!You should always update state in immutable fashion, without updating the original state first.
+ 
+ We need to assign a key property to a list as without it will rerender the whole list which is inefficient. To allow
+ react to keep track of elements, to find out which changed and which didn't so that it only rerenders the elements that 
+ did change on not the ones that didn't

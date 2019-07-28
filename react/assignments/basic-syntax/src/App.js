@@ -4,71 +4,74 @@ import UserOutput from "./UserOutput/UserOutput";
 
 class App extends Component {
   state = {
-    usernames: [{ name: "Jack" }, { name: "Jessica" }, { name: "Boris" }],
+    usernames: [
+      { id: 1, name: "Jack" },
+      { id: 2, name: "Jessica" },
+      { id: 3, name: "Boris" }
+    ],
     showUsers: false
-  };
-
-  switchNameHandler = newName => {
-    this.setState({
-      usernames: [
-        { name: newName },
-        { name: "Jessica Mendoza" },
-        { name: "Boris Johnson" }
-      ]
-    });
-  };
-
-  nameChangedHandler = event => {
-    this.setState({
-      usernames: [
-        { name: event.target.value },
-        { name: event.target.value },
-        { name: event.target.value }
-      ]
-    });
   };
 
   toggleContentHandler = event => {
     const doesShow = this.state.showUsers;
-    this.setState({showUsers: !doesShow}); // if does show is true it'll set showUsers to false
+    this.setState({ showUsers: !doesShow }); // if does show is true it'll set showUsers to false
+  };
+
+  deleteUserOutputHandler = usernameIndex => {
+    // const usernames = this.state.usernames.slice();
+    const usernames = [...this.state.usernames];
+    usernames.splice(usernameIndex, 1);
+    this.setState({ usernames: usernames });
+  };
+
+  changeNameHandler = (event, id) => {
+    const usernameIndex = this.state.usernames.findIndex(user => {
+      return user.id === id;
+    });
+    const usernameCopy = {...this.state.usernames[usernameIndex]};
+    usernameCopy.name = event.target.value;
+    const usernamesCopy = [...this.state.usernames];
+    usernamesCopy[usernameIndex] = usernameCopy;
+    this.setState({usernames: usernamesCopy});
   }
 
   render() {
+    let users = null;
+    let buttons = null;
+
+    if (this.state.showUsers) {
+      buttons = (
+        <div>
+          <button onClick={this.toggleContentHandler}>Hide Content</button>
+        </div>
+      );
+      users = (
+        <div>
+          {this.state.usernames.map((username, index) => {
+            return (
+              <UserOutput
+                name={username.name}
+                key={username.id}
+                changed={(event) => this.changeNameHandler(event, username.id)}
+                click={(event) => this.deleteUserOutputHandler(index)}
+              />
+            );
+          })}
+        </div>
+      );
+    } else {
+      buttons = (
+        <div>
+          <button onClick={this.toggleContentHandler}>Display Content</button>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <header className="App-header">
-          { this.state.showUsers === false ?
-          <div>
-          <button onClick={this.toggleContentHandler}>
-            Display Content
-          </button>
-          </div> : 
-          <div>
-          <button onClick={this.toggleContentHandler}>
-            Hide Content
-          </button>
-          </div>
-          }
-          { this.state.showUsers === true ?
-          <div>
-          <button onClick={() => this.switchNameHandler("Jack!!")}>
-            Change names
-          </button>
-          <UserOutput
-            name={this.state.usernames[0].name}
-            changed={this.nameChangedHandler}
-          />
-          <UserOutput
-            name={this.state.usernames[1].name}
-            click={this.switchNameHandler.bind(this, "Jessica")}
-            changed={this.nameChangedHandler}
-          />
-          <UserOutput
-            name={this.state.usernames[2].name}
-            changed={this.nameChangedHandler}
-          />
-          </div> : null
-          }
+          {buttons}
+          {users}
         </header>
       </div>
     );

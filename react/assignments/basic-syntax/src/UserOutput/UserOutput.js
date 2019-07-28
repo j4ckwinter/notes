@@ -4,7 +4,10 @@ const userOutput = props => {
   return (
     <div className="UserOutput">
       <p onClick={props.click}>This is {props.name}'s paragraph</p>
-      <input type="text" onChange={props.changed} defaultValue={props.name} />
+      <input 
+      type="text" 
+      onChange={props.changed} 
+      defaultValue={props.name} />
     </div>
   );
 };
