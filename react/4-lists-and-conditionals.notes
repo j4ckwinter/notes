@@ -1,0 +1,7 @@
+#Working With Lists and Conditionals
+
+#Rendering Content Conditionally
+In our render method we can wrap our JSX content in a { this.state.showPersons === true ? <div></div>} : null if we only 
+want to show persons given our state is true. Our else case is defined by the colon.
+This is another use of us injecting javascript expressions into JSX using curly brackets. Effectively we are calling
+React.createElement(), not explicitly but this is what React is doing under the hood.

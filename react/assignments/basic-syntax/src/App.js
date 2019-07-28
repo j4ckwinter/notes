@@ -4,7 +4,8 @@ import UserOutput from "./UserOutput/UserOutput";
 
 class App extends Component {
   state = {
-    usernames: [{ name: "Jack" }, { name: "Jessica" }, { name: "Boris" }]
+    usernames: [{ name: "Jack" }, { name: "Jessica" }, { name: "Boris" }],
+    showUsers: false
   };
 
   switchNameHandler = newName => {
@@ -27,10 +28,29 @@ class App extends Component {
     });
   };
 
+  toggleContentHandler = event => {
+    const doesShow = this.state.showUsers;
+    this.setState({showUsers: !doesShow}); // if does show is true it'll set showUsers to false
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
+          { this.state.showUsers === false ?
+          <div>
+          <button onClick={this.toggleContentHandler}>
+            Display Content
+          </button>
+          </div> : 
+          <div>
+          <button onClick={this.toggleContentHandler}>
+            Hide Content
+          </button>
+          </div>
+          }
+          { this.state.showUsers === true ?
+          <div>
           <button onClick={() => this.switchNameHandler("Jack!!")}>
             Change names
           </button>
@@ -47,6 +67,8 @@ class App extends Component {
             name={this.state.usernames[2].name}
             changed={this.nameChangedHandler}
           />
+          </div> : null
+          }
         </header>
       </div>
     );
