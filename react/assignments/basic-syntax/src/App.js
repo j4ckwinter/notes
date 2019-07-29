@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import UserOutput from "./UserOutput/UserOutput";
+import Users from "./components/Users/Users"
 
 class App extends Component {
   state = {
@@ -42,16 +42,11 @@ class App extends Component {
     if (this.state.showUsers) {
       users = (
         <div>
-          {this.state.usernames.map((username, index) => {
-            return (
-              <UserOutput
-                name={username.name}
-                key={username.id}
-                changed={event => this.changeNameHandler(event, username.id)}
-                click={event => this.deleteUserOutputHandler(index)}
-              />
-            );
-          })}
+          <Users 
+          usernames={this.state.usernames}
+          clicked={this.deleteUserOutputHandler}
+          changed={this.changeNameHandler}
+          />
         </div>
       );
       buttons = (

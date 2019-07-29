@@ -1,0 +1,24 @@
+# Diving Deeper into Components and React Internals
+
+# Project Structure
+As best practice we want to outsource of logic from the the app.js file. Best practice is to use as many functional 
+components as possible.
+
+# Class-based vs. Functional Components
+It can be useful to keep a sepearation of stateful and stateless components.
+Class-based:
+- class X extends Component
+- Access to state
+- Lifecycle hooks
+- Access state and props via "this"
+- !this.state.X! and !this.props.X!
+
+Functional:
+- const X = props => {}
+- Access to state (only since react 16.8 - react hooks)
+- No access to lifecycle hooks
+- Access props as an arguement
+- !props.X!
+
+# Component Lifecycles
+Array of methods we can add to any class-based component
