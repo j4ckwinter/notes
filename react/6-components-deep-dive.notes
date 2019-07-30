@@ -21,4 +21,11 @@ Functional:
 - !props.X!
 
 # Component Lifecycles
-Array of methods we can add to any class-based component
+List of lifecycle hooks we can add to any class-based component:
+1. constructor(props)                       -> Can initialise state here, also need super keyword to initialise extendable Component
+2. getDerivedStateFromProps(props, state)   -> static method, will return updated state
+3. render()                                 -> our JSX
+4. Render child components                  -> Will do the above for class-based components and initialise compoents
+5. componentDidMount()                      -> Final method, where we can put a http request to get data
+
+There are other hooks that are still supported but will likely be removed as some stage.
