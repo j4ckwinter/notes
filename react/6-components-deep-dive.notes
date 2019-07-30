@@ -11,16 +11,16 @@ Class-based:
 - Access to state
 - Lifecycle hooks
 - Access state and props via "this"
-- !this.state.X! and !this.props.X!
+- "this.state.X" and "this.props.X"
 
 Functional:
 - const X = props => {}
 - Access to state (only since react 16.8 - react hooks)
 - No access to lifecycle hooks
 - Access props as an arguement
-- !props.X!
+- "props.X!"
 
-# Component Lifecycles
+# Component Creation Lifecycle
 List of lifecycle hooks we can add to any class-based component:
 1. constructor(props)                       -> Can initialise state here, also need super keyword to initialise extendable Component
 2. getDerivedStateFromProps(props, state)   -> static method, will return updated state
@@ -29,3 +29,11 @@ List of lifecycle hooks we can add to any class-based component:
 5. componentDidMount()                      -> Final method, where we can put a http request to get data
 
 There are other hooks that are still supported but will likely be removed as some stage.
+
+# Component Update Lifecycle
+When props or state change (the two triggers). These lifecycle hooks are called:
+1. getDerivedStateFromProps(props, state)           -> Sync local state
+2. shouldComponentUpdate(nextProps, nextState)      -> Allows you to cancel updating processing, for performance (should be used carefully), prevent uneccessary update cycles
+3. render()                                         -> Rerender
+4. Update child components                          -> Same as above
+5. getSnapshotBeforeUpdate(prevProps, prevState)    -> Last minute dom ops, can give you previous scrolling postion for example
