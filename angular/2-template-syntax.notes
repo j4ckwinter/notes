@@ -1,0 +1,8 @@
+# Statement context
+
+As with expressions, statements can refer only to what's in the statement context such as an event handling method of 
+the component instance.
+
+Angular evaluates all expressions in double curly braces, converts the expression results to strings, and links them 
+with neighboring literal strings. Finally, it assigns this composite interpolated result to an element or directive 
+property.

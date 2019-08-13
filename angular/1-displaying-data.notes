@@ -1,0 +1,39 @@
+# Displaying Data
+
+String interpolation:
+The easiest way to display a component property is to bind the property name through interpolation. With interpolation, 
+you put the property name in the view template, enclosed in double curly braces: {{myHero}}.
+
+[javascript]
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>{{title}}</h1>
+    <h2>My favorite hero is: {{myHero}}</h2>
+    `
+})
+export class AppComponent {
+  title = 'Tour of Heroes';
+  myHero = 'Windstorm';
+}
+[end]
+
+Angular automatically pulls the value of the title and myHero properties from the component and inserts those values into 
+the browser. Angular updates the display when these properties change.
+
+!Template must use back ticks!
+The choice between inline and separate HTML is a matter of taste, circumstances, and organization policy. Here the app 
+uses inline HTML because the template is small and the demo is simpler without the additional HTML file.
+
+Showing an array property with *ngFor:
+Add an array to the component and then display it with the following;
+
+[html]
+<li *ngFor="let hero of heroes">
+    {{ hero }}
+</li>
+[end]
+
+Creating a class for the data:
+Create a model class and create a constructor.

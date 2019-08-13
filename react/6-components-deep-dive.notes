@@ -40,3 +40,17 @@ When props or state change (the two triggers). These lifecycle hooks are called:
 6. componentDidUpdate()                             -> Signals now done, render has been executed, can make http request
 
 !In class-based components props is accessed with the this keyword!
+
+# Notes
+webpack - toolkit used to compile JavaScript components into a single, loadable bundle
+babel - write your JavaScript code using ES6 and compile it into ES5 to run in the browser
+
+#State and props
+State:
+State is data that the component is expected to handle itself. It is also data that can fluctuate and change. To read 
+the state, you use this.state. To update it, you use this.setState(). Every time this.setState() is called, React updates 
+the state, calculates a diff between the previous state and the new state, and injects a set of changes to the DOM on 
+the page. This results a fast and efficient updates to your UI.
+Props:
+Properties encompass data that is passed into the component. Properties do NOT change but are instead fixed values. 
+To set them, you assign them to attributes when creating a new component.
