@@ -1,0 +1,32 @@
+Day One:
+
+Timesheet:
+- 20 minute standup
+- 15 minute call with Punit and Neil
+- 30 minute risk mitigation
+- 2 hours setup dev environment
+
+Notes:
+
+Section 1: Getting Started:
+App Module - tell which pieces belong to our App
+Eg. ngModule is a form feature so needs to be imported
+TypeScript - superset to javascript
+
+Section 2: The Basics:
+app.module.ts - @NgModule
+-declarations = Where angular can find the app
+-imports = Add some other modules
+-bootstrap = What point app should be aware of at startup
+
+Components
+-Create new component = ng g c servers (will add to app module auto)
+-Nesting component = In the html we can add <app-server> to nest a component
+Can write html and styles inline
+
+Databinding
+- Communication between template and TypeScript
+
+String interpolation:
+{{ property }}
+Needs to return a string eg. a method that returns a string
