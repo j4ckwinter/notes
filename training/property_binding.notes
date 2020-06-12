@@ -1,0 +1,35 @@
+Property Binding:
+
+Timesheet:
+- 20 minute standup
+- 30 minute future releases 
+
+Section 2: The Basics:
+Property binding:
+Can bind to native html properties eg. [disabled]="!buttonEnabled"
+Will update dynamically
+
+Property binding vs. String interpolation:
+If you want to output text -> String interpolation
+If you want to change an html property -> Property binding
+Don't mix them
+
+Event Binding:
+(click)="onStatusToggle()"
+$event the data emitted by that event
+
+Two way binding:
+Reacting to events in both directions
+
+<input type="text" class="form-control" [(ngModel)]="username">
+<p>{{ username }}</p>
+
+Property & Event Binding:
+We can bind to - HTML Elements, Directives, Componenents
+
+EventEmitter allows to emit our own events. Eg tell a parent component when something
+has been done. 
+new EventEmitter<{}>();
+Brackets to call the constructor
+event.emit({pass the object})
+We can then use @Output to pass out of the component

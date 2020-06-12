@@ -1,0 +1,6 @@
+Services:
+- Storing data
+- Http endpoints
+
+ng g s service_name
+

@@ -1,9 +1,0 @@
-Property & Event Binding:
-We can bind to - HTML Elements, Directives, Componenents
-
-EventEmitter allows to emit our own events. Eg tell a parent component when something
-has been done. 
-new EventEmitter<{}>();
-Brackets to call the constructor
-event.emit({pass the object})
-We can then use @Output to pass out of the component
