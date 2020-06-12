@@ -1,0 +1,18 @@
+Planning the app:
+
+          Root
+Todo List          Completed List
+Todo Items         Completed Items
+Todo Items edit    Completed Items detail
+Todo Items detail
+
+
+Item Model
+- title
+- description
+- expectedTime
+- itemStatus
+- category
+- dateCreated
+- dateToComplete
+- priority

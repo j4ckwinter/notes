@@ -1,0 +1,68 @@
+Day Two:
+
+Timesheet:
+- 20 minute standup
+- 30 minute future releases 
+
+Section 2: The Basics:
+Property binding:
+Can bind to native html properties eg. [disabled]="!buttonEnabled"
+Will update dynamically
+
+Property binding vs. String interpolation:
+If you want to output text -> String interpolation
+If you want to change an html property -> Property binding
+Don't mix them
+
+Event Binding:
+(click)="onStatusToggle()"
+$event the data emitted by that event
+
+Two way binding:
+Reacting to events in both directions
+
+<input type="text" class="form-control" [(ngModel)]="username">
+<p>{{ username }}</p>
+
+Directives:
+
+There are three kinds of directives in Angular:
+-Components: directives with a template.
+-Structural directives: change the DOM layout by adding and removing DOM elements.
+-Attribute directives: change the appearance or behavior of an element, component, 
+or another directive.
+
+Can't have two directives on the same element.
+
+Instructions in the DOM
+Lots of built in directives
+<p appTurnGreen> Recieves a green background</p>
+
+@Directive({
+    selector: '[appTurnGreen]'
+})
+export class TurnGreenDirective {
+    ...
+}
+
+Structural directive - *ngIf
+Attribute directives - look like normal html (no star)
+
+Terninary Expressions:
+getColour() {
+   return this.alertStatus === true ? 'green' : 'red';
+}
+
+Dynamic CSS:
+This will apply css dynamically if property alertStatus === true
+[ngClass]="{successful: alertStatus === true}"
+
+Outputting Lists with ngFor:
+*ngFor="let user of usernames"
+
+Creating Directive:
+ng g d directive_name
+
+We can implement with OnInit and during initialisation we can use the type Renderer2.
+Here we can call methods like renderer.setStyle().
+Renderer can be used for any DOM manipulations
