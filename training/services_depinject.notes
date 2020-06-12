@@ -1,0 +1,35 @@
+Services:
+- Logging
+- Storing data
+- Http endpoints
+- Create events that we can emit in other components
+
+ng g s service_name
+
+Dependency Injection:
+Our component will have a dependency on our service class. We need to inject this
+dependency into our component. Angular will do this for us.
+
+// Steps
+1. Add service to constructor in component so we can istantiate it.
+2. Then we need to provide it in the component.
+
+Heirarchical Injector:
+The above is fine when injecting our service in child components.
+
+- If we provide in AppModule everywhere has the service.
+- AppComponent is all components.
+- Componenet is the component.
+
+// @Injectable()
+Annotation we need to add if we want to inject another service into our service
+It creates metadata.
+
+- Instead of adding a service class to the providers[] array in AppModule
+you can set the following config in @Injectable()
+
+@Injectable({providedIn: 'root'})
+export class MyService { ... }
+
+The "new syntax" does offer one advantage though:
+Services can be loaded lazily by Angular (behind the scenes)
