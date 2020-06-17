@@ -1,0 +1,21 @@
+Forms:
+
+Template Drive Form:
+#Submit the form:
+#1
+<form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+onSubmit(form: ngForm){
+    console.log(form);
+}
+
+#2
+<form (ngSubmit)="onSubmit()" #form="ngForm" >
+
+@ViewChild('form') theForm: NgForm;
+onSubmit(){
+    console.log(this.theForm);
+}
+
+#Validate User Input
+<input required email>
+<button [disabled]="!form.valid">

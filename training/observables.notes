@@ -1,0 +1,51 @@
+Observable:
+Various data sources
+What should happen if I recieve...
+Asynchronous tasks - don't know when they'll take to happen
+DOn't want to block code
+
+!Constructs to which you subscribe to be informed aboput changes in data!
+
+We need to cleanup subscriptions to avoid memory leaks.
+
+To do this we can create a subscription variable and assign our subscription to it.
+Then implement OnDestroy to destroy the subscription when we navigate away. eg.
+
+
+export class MyComponent implements OnInit, OnDestroy {
+    sub: Subcription;
+    
+    ngOnInit() {
+        this.sub = interval(10).subscribe(count => {
+            console.log(count);
+        })
+    }
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
+    }
+}
+
+When we leave component -> clear subscription
+
+Angular cleans up its own subscriptions
+
+Operators:
+data            data                data
+---------------> Observable ----------------->
+                    |
+                    |
+                Subcription
+
+Operators can be added between subscription and observable.
+We can then call the observable with .pipe() method.
+We can transform the data with this operator
+
+Subjects:
+Use it instead of event emitter
+Instead of calling .emit call .next
+We still call subscribe.
+More efficient
+A subject is "active", can be triggered from code.
+
+- Use it when communicating across components eg services
+- Event emitter when using @Input
