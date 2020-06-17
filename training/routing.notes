@@ -1,0 +1,26 @@
+Routing:
+- Doesn't reload the app after every request
+- Faster
+- Keeps the app state
+
+Can use relative paths through child components eg. 
+Parent: "/servers"
+Child: "servers"
+
+Can also use ../ paths.
+
+We can inject Router and ActivatedRoute to set route on a button click eg.
+onClick() {
+    // some logic
+    this.router.navigate(['servers'], {relativeTo: this.route});
+}
+
+Order can matter eg.
+    path: 'dashboard', component: TodoComponent, children: [
+      {path: 'new', component: TodoCreateComponent},
+      {path: ':id', component: TodoDetailComponent},
+      {path: ':id/edit', component: TodoCreateComponent}
+    ]
+New needs to come before id
+
+Don't need to clean up subscription, as angular manages the observable
